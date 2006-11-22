@@ -1,0 +1,19 @@
+---
+name: Text-Sprintf-Named
+version: 0.01
+author:
+  - 'Shlomi Fish <shlomif@cpan.org>'
+abstract: sprintf-like function with named conversions
+license: bsd
+resources:
+  license: http://www.opensource.org/licenses/bsd-license.php
+build_requires:
+  Test::More: 0
+provides:
+  Text::Sprintf::Named:
+    file: lib/Text/Sprintf/Named.pm
+    version: 0.01
+generated_by: Module::Build version 0.2805
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2
