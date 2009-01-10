@@ -11,11 +11,11 @@ Text::Sprintf::Named - sprintf-like function with named conversions
 
 =head1 VERSION
 
-Version 0.0202
+Version 0.0203
 
 =cut
 
-our $VERSION = '0.0202';
+our $VERSION = '0.0203';
 
 =head1 SYNOPSIS
 
@@ -23,11 +23,11 @@ our $VERSION = '0.0202';
 
     my $formatter =
         Text::Sprintf::Named->new(
-            {fmt => "Hello %(name)s! Today is %(day)s!"
+            {fmt => "Hello %(name)s! Today is %(day)s!"}
         );
 
     # Returns "Hello Ayeleth! Today is Sunday!"
-    $formmater->format({args => {'name' => "Ayeleth", 'day' => "Sunday"}});
+    $formatter->format({args => {'name' => "Ayeleth", 'day' => "Sunday"}});
 
     # Returns "Hello John! Today is Thursday!"
     $formatter->format({args => {'name' => "John", 'day' => "Thursday"}});

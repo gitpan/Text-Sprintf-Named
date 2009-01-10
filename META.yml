@@ -1,6 +1,6 @@
 ---
 name: Text-Sprintf-Named
-version: 0.0202
+version: 0.0203
 author:
   - 'Shlomi Fish <shlomif@cpan.org>'
 abstract: sprintf-like function with named conversions
@@ -12,7 +12,7 @@ build_requires:
 provides:
   Text::Sprintf::Named:
     file: lib/Text/Sprintf/Named.pm
-    version: 0.0202
+    version: 0.0203
 generated_by: Module::Build version 0.31
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
