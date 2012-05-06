@@ -6,17 +6,23 @@ use strict;
 use Carp;
 use warnings::register;
 
+use parent 'Exporter';
+
+use vars qw(@EXPORT_OK);
+
+@EXPORT_OK = (qw( named_sprintf ));
+
 =head1 NAME
 
 Text::Sprintf::Named - sprintf-like function with named conversions
 
 =head1 VERSION
 
-Version 0.0301
+Version 0.0400
 
 =cut
 
-our $VERSION = '0.0301';
+our $VERSION = '0.0400';
 
 =head1 SYNOPSIS
 
@@ -32,6 +38,16 @@ our $VERSION = '0.0301';
 
     # Returns "Hello John! Today is Thursday!"
     $formatter->format({args => {'name' => "John", 'day' => "Thursday"}});
+
+    # Or alternatively using the non-OOP interface:
+
+    use Text::Sprintf::Named qw(named_sprintf);
+
+    # Prints "Hello Sophie!" (and a newline).
+    print named_sprintf("Hello %(name)s!\n", { name => 'Sophie' });
+
+    # Same, but with a flattened parameter list (not inside a hash reference)
+    print named_sprintf("Hello %(name)s!\n", name => 'Sophie');
 
 =head1 DESCRIPTION
 
@@ -142,6 +158,7 @@ The name of the conversion.
 =back
 
 =cut
+
 sub calc_param
 {
     my ($self, $args) = @_;
@@ -174,6 +191,39 @@ sub _sprintf
     my ($self, $format, @args) = @_;
 
     return sprintf($format, @args);
+}
+
+=head2 named_sprintf($format, {%parameters})
+
+=head2 named_sprintf($format, %parameters)
+
+This is a convenience function to directly format a string with the named
+parameters, which can be specified inside a (non-blessed) hash reference or
+as a flattened hash. See the synopsis for an example.
+
+=cut
+
+sub named_sprintf
+{
+    my ($format, @args) = @_;
+
+    my $params;
+    if (! @args)
+    {
+        $params = {};
+    }
+    elsif (ref($args[0]) eq "HASH")
+    {
+        $params = shift(@args);
+    }
+    else
+    {
+        $params = {@args};
+    }
+
+    return 
+        Text::Sprintf::Named->new({ fmt => $format})
+                            ->format({args => $params});
 }
 
 =head1 AUTHOR
@@ -225,6 +275,30 @@ L<http://svn.berlios.de/svnroot/repos/web-cpan/Text-Sprintf/trunk/>
 The (possibly ad-hoc) regex for matching the optional digits+symbols 
 parameters' prefix of the sprintf conversion was originally written by Bart 
 Lateur (BARTL on CPAN) for his L<String::Sprintf> module.
+
+The syntax was borrowed directly from Python’s "%" operator when used
+with its dictionaries as the right-hand argument. A quick web search did
+not yield good documentation about it (and I came with the idea of a named
+sprintf without knowing that Python had it, only ran into the fact that
+Python had it by web-searching).
+
+=head1 SIMILAR MODULES
+
+L<Text::sprintfn> is a newer module which only provides a procedural interface 
+that allows one to mix positional and named arguments, with some other
+interesting features.
+
+L<String::Formatter> is a comprehensive module that allows one to define
+custom sprintf-like functions (I’m not sure whether it has named conversions).
+Its license is the GNU General Public Licence version 2 (GPLv2), which is both
+restrictive and incompatible with version 3 of the GPL and with many other
+open-source licenses.
+
+L<String::Sprintf> appears to allow one to provide custom sprintf/printf
+formats (without providing named conversions).
+
+For the lighter side, there is L<Acme::StringFormat>, which provides a
+"%" operator to format a string.
 
 =head1 COPYRIGHT & LICENSE
 

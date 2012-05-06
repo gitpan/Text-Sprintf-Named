@@ -1,22 +1,38 @@
 ---
-name: Text-Sprintf-Named
-version: 0.0301
+abstract: 'sprintf-like function with named conversions'
 author:
   - 'Shlomi Fish <shlomif@cpan.org>'
-abstract: sprintf-like function with named conversions
-license: mit
-resources:
-  license: http://www.opensource.org/licenses/mit-license.php
 build_requires:
   Test::More: 0
   Test::Warn: 0.21
 configure_requires:
-  Module::Build: 0.35
-provides:
-  Text::Sprintf::Named:
-    file: lib/Text/Sprintf/Named.pm
-    version: 0.0301
-generated_by: Module::Build version 0.35
+  Module::Build: 0.36
+dynamic_config: 1
+generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.120630'
+keywords:
+  - conversions
+  - format
+  - named
+  - percent
+  - python
+  - sprintf
+license: mit
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
+name: Text-Sprintf-Named
+provides:
+  Text::Sprintf::Named:
+    file: lib/Text/Sprintf/Named.pm
+    version: 0.0400
+requires:
+  Carp: 0
+  Exporter: 0
+  parent: 0
+  strict: 0
+  warnings: 0
+  warnings::register: 0
+resources:
+  license: http://www.opensource.org/licenses/mit-license.php
+  repository: https://bitbucket.org/shlomif/perl-text-sprintf
+version: 0.0400
