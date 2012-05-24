@@ -8,7 +8,7 @@ build_requires:
 configure_requires:
   Module::Build: 0.36
 dynamic_config: 1
-generated_by: 'Module::Build version 0.38, CPAN::Meta::Converter version 2.120630'
+generated_by: 'Module::Build version 0.3901, CPAN::Meta::Converter version 2.120630'
 keywords:
   - conversions
   - format
@@ -24,7 +24,7 @@ name: Text-Sprintf-Named
 provides:
   Text::Sprintf::Named:
     file: lib/Text/Sprintf/Named.pm
-    version: 0.0400
+    version: 0.0401
 requires:
   Carp: 0
   Exporter: 0
@@ -33,6 +33,6 @@ requires:
   warnings: 0
   warnings::register: 0
 resources:
-  license: http://www.opensource.org/licenses/mit-license.php
+  license: http://opensource.org/licenses/mit-license.php
   repository: https://bitbucket.org/shlomif/perl-text-sprintf
-version: 0.0400
+version: 0.0401

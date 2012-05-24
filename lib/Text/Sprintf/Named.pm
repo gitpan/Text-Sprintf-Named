@@ -12,17 +12,19 @@ use vars qw(@EXPORT_OK);
 
 @EXPORT_OK = (qw( named_sprintf ));
 
+=encoding utf8
+
 =head1 NAME
 
 Text::Sprintf::Named - sprintf-like function with named conversions
 
 =head1 VERSION
 
-Version 0.0400
+Version 0.0401
 
 =cut
 
-our $VERSION = '0.0400';
+our $VERSION = '0.0401';
 
 =head1 SYNOPSIS
 
