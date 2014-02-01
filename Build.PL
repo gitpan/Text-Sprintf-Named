@@ -14,6 +14,7 @@ my $builder = Test::Run::Builder->new(
         'Carp' => 0,
         'Exporter' => 0,
         'parent' => 0,
+        'perl' => '5.008',
         'strict' => 0,
         'warnings' => 0,
         'warnings::register' => 0,
@@ -23,7 +24,6 @@ my $builder = Test::Run::Builder->new(
         'Test::Warn' => '0.21',
     },
     add_to_cleanup      => [ 'Text::Sprintf::Named-*' ],
-    create_makefile_pl => 'passthrough',
     configure_requires => {
         'Module::Build' => '0.36',
     },
